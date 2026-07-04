@@ -19,6 +19,7 @@ from scripts.renderers import html_renderer, pdf_renderer
 def main():
     parser = argparse.ArgumentParser(description="의정부 경전철 월간 분석 보고서 자동 생성 오케스트레이터")
     parser.add_argument("--period", type=str, default="2026-05", help="분석 대상 기간 (YYYY-MM)")
+    parser.add_argument("--pdf", action="store_true", help="PDF 보고서 생성 여부 (기본값: False)")
     args = parser.parse_args()
     
     period = args.period
@@ -158,8 +159,11 @@ def main():
     print("[Renderer] HTML 템플릿 컴파일 및 report.html 생성 가동...")
     html_path = html_renderer.render_html_report(period, base_dir, "templates", output_dir)
     
-    # 12. PDF 보고서 더미 호출 (후속 준비)
-    pdf_renderer.convert_html_to_pdf(html_path, html_path.replace(".html", ".pdf"))
+    # 12. PDF 보고서 호출 (옵션)
+    if args.pdf:
+        pdf_renderer.convert_html_to_pdf(html_path, html_path.replace(".html", ".pdf"))
+    else:
+        print("[PDF Renderer] PDF 생성 생략 (옵션 미지정)")
     
     print(f"=== 의정부 경전철 월간 HTML 보고서 생성 완료 (outputs/monthly/{period}/report.html) ===")
 
