@@ -335,6 +335,90 @@
       margin-bottom: 8px;
       font-size: 14.5px;
     }
+
+    /* PDF 프린트 출력용 스타일 (페이지 잘림 방지 및 레이아웃 개선) */
+    @media print {
+      body {
+        background-color: white !important;
+        padding-bottom: 0;
+        font-size: 13pt; /* 프린트 가독성을 위해 폰트 크기 미세조정 */
+      }
+      .container {
+        margin: 0 auto;
+        padding: 0 15px;
+        max-width: none;
+      }
+      /* 라운드 박스 디자인을 없애고 여백 중심의 문서(Document) 스타일로 변경 */
+      .section-card {
+        page-break-inside: avoid;
+        box-shadow: none !important;
+        border: none !important; /* 테두리 제거 */
+        background: transparent !important; /* 배경색 제거 */
+        padding: 10px 0 !important; /* 좌우 여백을 없애서 테이블이 넉넉하게 들어갈 공간 확보 */
+        margin-bottom: 40px !important; /* 섹션 간격 확보 */
+      }
+      .section-card h3 {
+        font-size: 18pt;
+        border-bottom: 2px solid var(--text-primary); /* 인쇄용 대비 높은 색상으로 강조 */
+        margin-bottom: 20px;
+        padding-bottom: 5px;
+      }
+      /* 표와 차트가 페이지 중간에 잘리지 않도록 보호 */
+      .chart-container, .table-container, table, tr, img {
+        page-break-inside: avoid;
+      }
+      /* 테이블 테두리를 깔끔한 실선으로 변경하여 인쇄 최적화 */
+      table {
+        border: 1px solid var(--card-border);
+      }
+      th, td {
+        border-bottom: 1px solid var(--card-border);
+        padding: 12px 8px;
+      }
+      th {
+        background-color: #f8fafc !important; /* 인쇄 시 옅은 회색 배경 유지 */
+        -webkit-print-color-adjust: exact;
+      }
+      /* 네비게이션/토글 버튼 등 인쇄 불필요 요소 숨김 */
+      header {
+        position: static !important;
+        box-shadow: none;
+        border-bottom: 2px solid var(--text-primary);
+        padding: 15px 0;
+        margin-bottom: 30px;
+      }
+      .theme-toggle-btn, .toc-card {
+        display: none !important; 
+      }
+      /* 특정 장(Section)의 강제 페이지 넘김 설정 */
+      #section1 {
+        page-break-after: always !important; /* 1번 종합요약 단독 1장 */
+      }
+      #section3 {
+        page-break-after: always !important; /* 2번, 3번이 한 장에 나오고 페이지 넘김 */
+      }
+      /* 종합 지표 카드 4개를 1줄에 나란히 배치 */
+      .metrics-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important; /* 강제 4단 */
+        gap: 10px !important;
+      }
+      .metric-item {
+        border: 1px solid var(--card-border);
+        background: transparent !important;
+        padding: 12px 8px !important; /* 카드 너비를 줄이기 위해 여백 최소화 */
+      }
+      .metric-item .label {
+        font-size: 10pt !important;
+        margin-bottom: 4px;
+      }
+      .metric-item .value {
+        font-size: 16pt !important; /* 글씨 크기를 줄여 4개가 들어가도록 조절 */
+      }
+      .metric-item .unit {
+        font-size: 11pt !important;
+      }
+    }
   </style>
 </head>
 <body>
