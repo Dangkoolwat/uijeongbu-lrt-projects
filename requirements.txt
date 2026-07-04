@@ -6,3 +6,4 @@ playwright
 PyYAML
 requests
 pyarrow
+holidays
