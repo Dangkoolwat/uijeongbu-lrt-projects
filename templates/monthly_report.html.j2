@@ -381,11 +381,7 @@
       }
       /* 네비게이션/토글 버튼 등 인쇄 불필요 요소 숨김 */
       header {
-        position: static !important;
-        box-shadow: none;
-        border-bottom: 2px solid var(--text-primary);
-        padding: 15px 0;
-        margin-bottom: 30px;
+        display: none !important; /* PDF 출력 시 상단 'HTML 분석 보고서' 타이틀을 숨겨 깔끔하게 만듦 */
       }
       .theme-toggle-btn, .toc-card {
         display: none !important; 
