@@ -341,7 +341,7 @@
       body {
         background-color: var(--bg-color) !important; /* HTML 원본 배경색 유지 */
         padding-bottom: 0;
-        font-size: 14px !important; /* HTML 원본 사이즈에 맞춤 (어벙벙함 해소) */
+        font-size: 12px !important; /* 전체 폰트를 12px로 축소하여 가독성 및 공간 확보 */
         -webkit-print-color-adjust: exact; /* 배경색 출력 강제 */
       }
       .container {
@@ -357,7 +357,8 @@
         background-color: var(--card-bg) !important; /* 하얀 박스 배경 유지 */
         border-radius: 12px !important; /* 라운딩 복원 */
         padding: 24px !important; /* HTML 패딩 유지 */
-        margin-bottom: 30px !important; /* 섹션 간격 확보 */
+        margin-top: 40px !important; /* 아이템(섹션) 시작 시 상단 여백 추가 */
+        margin-bottom: 40px !important; /* 섹션 하단 간격 확보 */
         -webkit-print-color-adjust: exact;
       }
       .section-card h3 {
@@ -373,7 +374,7 @@
       /* 테이블 테두리를 깔끔한 실선으로 변경하여 인쇄 최적화 */
       table {
         border: 1px solid var(--card-border) !important;
-        font-size: 12.5px !important; /* HTML과 동일한 크기로 유지 */
+        font-size: 11px !important; /* 본문 축소에 맞춰 테이블도 작게 */
       }
       th, td {
         border-bottom: 1px solid var(--card-border) !important;
