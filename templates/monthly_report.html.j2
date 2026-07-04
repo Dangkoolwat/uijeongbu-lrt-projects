@@ -379,27 +379,32 @@
         background-color: #f8fafc !important; /* 인쇄 시 옅은 회색 배경 유지 */
         -webkit-print-color-adjust: exact;
       }
-      /* 네비게이션/토글 버튼 등 인쇄 불필요 요소 숨김 및 타이틀 레이아웃 복원 */
+      /* 상단 바 디자인을 얇은 띠 형태로 유지하고 텍스트와 불필요한 여백은 완벽 제거 */
       header {
         position: static !important;
-        box-shadow: none;
-        border-bottom: 2px solid var(--text-primary);
-        padding: 15px 0;
-        margin-bottom: 40px;
+        box-shadow: none !important;
+        border: none !important;
+        border-top: 5px solid var(--header-bg) !important; /* 상단에 굵은 색상 띠 하나만 둠 */
+        padding: 0 !important;
+        margin: 0 0 30px 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
       }
-      header h1 {
-        visibility: hidden !important; /* 텍스트(의정부 경전철 월간 HTML 분석 보고서)만 지우고 배경 선은 유지 */
+      header h1, header button {
+        display: none !important;
       }
       .theme-toggle-btn, .toc-card {
         display: none !important; 
       }
-      /* 대제목 영역: 중앙 정렬, 줄바꿈 방지 및 적절한 하단 여백 (1장 바로 위에 위치하도록) */
+      /* 대제목 영역: 중앙 정렬, 줄바꿈 방지. 무조건 1장과 같은 페이지에 붙도록 설정 */
       .report-title-section {
-        margin: 10px auto 30px auto !important; /* 위아래 여백을 대폭 줄여서 1장과 붙임 */
+        margin: 0 auto 40px auto !important; 
         text-align: center;
+        page-break-after: avoid !important; /* 대제목 직후에 페이지가 갈라지지 않도록 강제 방어 */
+        page-break-inside: avoid !important;
       }
       .report-title-section h2 {
-        font-size: 26pt !important; /* 폰트를 살짝 줄여서 문서 제목처럼 단정하게 */
+        font-size: 26pt !important;
         white-space: nowrap !important;
         margin-bottom: 10px !important;
       }
@@ -409,7 +414,9 @@
       }
       /* 특정 장(Section)의 강제 페이지 넘김 설정 */
       #section1 {
+        page-break-before: avoid !important; /* 제목과 절대 갈라지지 않도록 설정 */
         page-break-after: always !important; /* 1번 종합요약 단독 1장 */
+        margin-top: 0 !important;
       }
       #section3 {
         page-break-after: always !important; /* 2번, 3번이 한 장에 나오고 페이지 넘김 */
