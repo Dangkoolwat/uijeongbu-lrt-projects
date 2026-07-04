@@ -393,18 +393,18 @@
       .theme-toggle-btn, .toc-card {
         display: none !important; 
       }
-      /* 대제목 영역: 중앙 정렬, 줄바꿈 방지 및 넓은 상하 여백 */
+      /* 대제목 영역: 중앙 정렬, 줄바꿈 방지 및 적절한 하단 여백 (1장 바로 위에 위치하도록) */
       .report-title-section {
-        margin: 60px auto 80px auto !important;
+        margin: 10px auto 30px auto !important; /* 위아래 여백을 대폭 줄여서 1장과 붙임 */
         text-align: center;
       }
       .report-title-section h2 {
-        font-size: 30pt !important;
-        white-space: nowrap !important; /* "리포트" 글자 줄바꿈 깨짐 방지 */
-        margin-bottom: 20px !important;
+        font-size: 26pt !important; /* 폰트를 살짝 줄여서 문서 제목처럼 단정하게 */
+        white-space: nowrap !important;
+        margin-bottom: 10px !important;
       }
       .report-title-section p {
-        font-size: 14pt !important;
+        font-size: 13pt !important;
         white-space: nowrap !important;
       }
       /* 특정 장(Section)의 강제 페이지 넘김 설정 */
