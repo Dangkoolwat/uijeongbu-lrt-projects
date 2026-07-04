@@ -271,19 +271,19 @@
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 14px;
+      font-size: 12.5px; /* 폰트 사이즈 축소 */
     }
 
     th {
       background-color: rgba(148, 163, 184, 0.1);
       color: var(--text-primary);
-      padding: 12px;
+      padding: 8px 10px; /* 패딩 축소하여 콤팩트하게 */
       font-weight: 600;
       border-bottom: 2px solid var(--card-border);
     }
 
     td {
-      padding: 12px;
+      padding: 8px 10px; /* 패딩 축소 */
       border-bottom: 1px solid var(--card-border);
       color: var(--text-primary);
     }
@@ -370,10 +370,11 @@
       /* 테이블 테두리를 깔끔한 실선으로 변경하여 인쇄 최적화 */
       table {
         border: 1px solid var(--card-border);
+        font-size: 10.5pt !important; /* 인쇄 시 테이블 폰트를 더 작게 */
       }
       th, td {
         border-bottom: 1px solid var(--card-border);
-        padding: 12px 8px;
+        padding: 6px 4px; /* 인쇄 시 셀 여백을 확 줄여서 공간 확보 */
       }
       th {
         background-color: #f8fafc !important; /* 인쇄 시 옅은 회색 배경 유지 */

@@ -36,7 +36,8 @@ def generate_station_rank_chart(period: str, base_dir: str = "data", output_dir:
                 
     # 3. 스타일링 적용
     title = f"의정부 경전철 역별 이용량 순위 ({period})"
-    chart_style.apply_premium_style(ax, title=title, xlabel="총 이용객 수 (승차+하차, 명)", ylabel="역명")
+    chart_style.apply_premium_style(ax, title=title, xlabel="총 이용객 수 (승차+하차, 명)", ylabel="")
+    ax.set_yticks([]) # Y축 눈금 및 라벨(역명) 완전 삭제
     
     # X축 범위 조금 넓혀서 숫자 라벨 안잘리게 방지
     max_val = df_sorted["total_count"].max()
