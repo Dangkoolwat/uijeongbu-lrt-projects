@@ -57,6 +57,11 @@ uijeongbu-lrt-report-skill/
 에이전트가 "보고서 작성이 완료되었습니다"라고 안내하면 시스템 구동이 종료된 것입니다.
 - `outputs/monthly/YYYY-MM/` 폴더로 이동하여 최종 완성된 HTML 페이지와 PDF 파일을 확인합니다.
 
+## 5. 샘플 보고서 (Sample)
+실제 시스템이 어떻게 결과물을 생성하는지 확인하실 수 있도록 2026년 5월 기준의 샘플 보고서를 미리 생성해 두었습니다.
+- HTML 렌더링 예시: [samples/2026-05/report.html](samples/2026-05/report.html)
+- PDF 렌더링 예시: [samples/2026-05/report.pdf](samples/2026-05/report.pdf)
+
 ## 7. 외부 데이터 수집 방식
 - 수집기는 오직 외부 API 및 웹 요청을 통해 날것의 데이터(Raw HTML/JSON)를 저장하는 역할만 담당합니다.
 - 사람이 읽기 쉬운 형태의 한글 맵핑 및 가공은 수집 단계가 아닌 Utility 레이어에서 처리합니다.
