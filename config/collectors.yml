@@ -1,0 +1,24 @@
+# 데이터 수집기 설정 (config/collectors.yml)
+
+# 의정부 행사·축제 수집 설정
+city_events:
+  source_url: "https://ui4u.go.kr/portal/eventNoti/custom/calendar.do?mId=0301170200"
+  request_timeout: 15
+  headers:
+    User-Agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+
+# Open-Meteo 과거 날씨 API 설정
+weather:
+  api_url: "https://archive-api.open-meteo.com/v1/archive"
+  default_params:
+    latitude: 37.74
+    longitude: 127.03
+    timezone: "Asia/Seoul"
+    daily:
+      - "temperature_2m_mean"
+      - "temperature_2m_max"
+      - "temperature_2m_min"
+      - "precipitation_sum"
+      - "rain_sum"
+      - "weather_code"
+      - "wind_speed_10m_max"

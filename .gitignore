@@ -1,0 +1,21 @@
+# Python 컴파일 및 캐시 파일
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints
+
+# 가상환경
+.venv/
+venv/
+env/
+ENV/
+
+# OS 파일
+.DS_Store
+Thumbs.db
+
+# 로컬 데이터 캐시 및 결과물 (대용량 파일 업로드 방지)
+data/raw/external_cache/
+data/processed/
+outputs/

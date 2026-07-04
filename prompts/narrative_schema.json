@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MonthlyReportNarrative",
+  "type": "object",
+  "properties": {
+    "executive_summary": {
+      "type": "string",
+      "description": "3-4줄 내외의 월간 종합 요약문"
+    },
+    "key_findings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "핵심 발견 사항 3개 이상의 리스트"
+    },
+    "station_analysis": {
+      "type": "string",
+      "description": "역별 통계 및 특이사항 분석"
+    },
+    "hourly_analysis": {
+      "type": "string",
+      "description": "시간대별 출퇴근 피크 및 탑승 특성 분석"
+    },
+    "weekday_analysis": {
+      "type": "string",
+      "description": "평일 및 주말/공휴일 분포 분석"
+    },
+    "weather_event_context": {
+      "type": "string",
+      "description": "날씨 상태 및 주요 축제/행사 연계 가능성 서술"
+    },
+    "operational_notes": {
+      "type": "string",
+      "description": "경전철 운영에 필요한 제안 사항"
+    },
+    "limitations": {
+      "type": "string",
+      "description": "통계 분석 범위 상의 한계 기술"
+    }
+  },
+  "required": [
+    "executive_summary",
+    "key_findings",
+    "station_analysis",
+    "hourly_analysis",
+    "weekday_analysis",
+    "weather_event_context",
+    "operational_notes",
+    "limitations"
+  ]
+}
