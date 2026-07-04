@@ -80,7 +80,7 @@ def collect_events(period: str, output_base_dir: str = "data") -> tuple[str, str
     try:
         parts = period.split("-")
         year, month = int(parts[0]), int(parts[1])
-        kr_holidays = holidays.KR(years=year)
+        kr_holidays = holidays.KR(years=year, language='ko')
         
         for date_obj, name in sorted(kr_holidays.items()):
             if date_obj.month == month:
