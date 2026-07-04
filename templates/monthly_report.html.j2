@@ -379,28 +379,34 @@
         background-color: #f8fafc !important; /* 인쇄 시 옅은 회색 배경 유지 */
         -webkit-print-color-adjust: exact;
       }
-      /* 상단 바 디자인을 얇은 띠 형태로 유지하고 텍스트와 불필요한 여백은 완벽 제거 */
+      /* 상단 바 디자인 원래대로 복구 (단, 글자와 버튼만 안 보이게) */
       header {
         position: static !important;
+        background-color: var(--header-bg) !important;
+        padding: 20px 40px !important;
+        margin-bottom: 0 !important;
         box-shadow: none !important;
-        border: none !important;
-        border-top: 5px solid var(--header-bg) !important; /* 상단에 굵은 색상 띠 하나만 둠 */
-        padding: 0 !important;
-        margin: 0 0 30px 0 !important;
-        height: 0 !important;
-        overflow: hidden !important;
       }
       header h1, header button {
-        display: none !important;
+        visibility: hidden !important; /* 공간(높이)은 유지하고 내용물만 지움 */
+        display: block !important;
       }
       .theme-toggle-btn, .toc-card {
         display: none !important; 
       }
-      /* 대제목 영역: 중앙 정렬, 줄바꿈 방지. 무조건 1장과 같은 페이지에 붙도록 설정 */
+      /* 커버 페이지(대제목+1장) 수직 정중앙 래퍼 */
+      .cover-page-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 85vh; /* 상단 헤더 제외한 나머지 영역에서 중앙 정렬 */
+        page-break-after: always !important;
+      }
+      /* 대제목 영역: 중앙 정렬, 줄바꿈 방지 */
       .report-title-section {
-        margin: 0 auto 40px auto !important; 
+        margin: 0 auto 50px auto !important; 
         text-align: center;
-        page-break-after: avoid !important; /* 대제목 직후에 페이지가 갈라지지 않도록 강제 방어 */
+        page-break-after: avoid !important;
         page-break-inside: avoid !important;
       }
       .report-title-section h2 {
@@ -455,36 +461,39 @@
 
   <div class="container">
     
-    <!-- 리포트 메인 헤더 -->
-    <div class="report-title-section">
-      <h2>{{ report_data.period_ko }} 분석 리포트</h2>
-      <p>작성일: {{ report_data.report_date }} | 수집 기준: 의정부 경전철 승하차 통계</p>
-    </div>
-
-    <!-- 목차 네비게이션 카드 -->
-    <nav class="toc-card">
-      <h2>목차</h2>
-      <ul class="toc-list">
-        <li><a href="#section1">1. 종합 요약</a></li>
-        <li><a href="#section2">2. 데이터 기준 및 품질</a></li>
-        <li><a href="#section3">3. 월간 전체 이용현황</a></li>
-        <li><a href="#section4">4. 역별 이용현황</a></li>
-        <li><a href="#section5">5. 시간대별 이용 패턴</a></li>
-        <li><a href="#section6">6. 요일별 이용 패턴</a></li>
-        <li><a href="#section7">7. 날씨·행사 연계 검토</a></li>
-        <li><a href="#section8">8. 주요 변화 및 특이사항</a></li>
-        <li><a href="#section9">9. 운영 관점 시사점</a></li>
-        <li><a href="#section10">10. 한계 및 추가 검토사항</a></li>
-      </ul>
-    </nav>
-
-    <!-- 1. 종합 요약 -->
-    <section class="section-card" id="section1">
-      <h3>1. 종합 요약</h3>
-      <div class="narrative-text">
-        {{ report_narrative.executive_summary }}
+    <!-- 표지 래퍼 (인쇄 시 수직 정중앙 정렬용) -->
+    <div class="cover-page-wrapper">
+      <!-- 리포트 메인 헤더 -->
+      <div class="report-title-section">
+        <h2>{{ report_data.period_ko }} 분석 리포트</h2>
+        <p>작성일: {{ report_data.report_date }} | 수집 기준: 의정부 경전철 승하차 통계</p>
       </div>
-    </section>
+
+      <!-- 목차 네비게이션 카드 -->
+      <nav class="toc-card">
+        <h2>목차</h2>
+        <ul class="toc-list">
+          <li><a href="#section1">1. 종합 요약</a></li>
+          <li><a href="#section2">2. 데이터 기준 및 품질</a></li>
+          <li><a href="#section3">3. 월간 전체 이용현황</a></li>
+          <li><a href="#section4">4. 역별 이용현황</a></li>
+          <li><a href="#section5">5. 시간대별 이용 패턴</a></li>
+          <li><a href="#section6">6. 요일별 이용 패턴</a></li>
+          <li><a href="#section7">7. 날씨·행사 연계 검토</a></li>
+          <li><a href="#section8">8. 주요 변화 및 특이사항</a></li>
+          <li><a href="#section9">9. 운영 관점 시사점</a></li>
+          <li><a href="#section10">10. 한계 및 추가 검토사항</a></li>
+        </ul>
+      </nav>
+
+      <!-- 1. 종합 요약 -->
+      <section class="section-card" id="section1">
+        <h3>1. 종합 요약</h3>
+        <div class="narrative-text">
+          {{ report_narrative.executive_summary }}
+        </div>
+      </section>
+    </div> <!-- // cover-page-wrapper 끝 -->
 
     <!-- 2. 데이터 기준 및 품질 점검 -->
     <section class="section-card" id="section2">
