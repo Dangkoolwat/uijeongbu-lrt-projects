@@ -402,9 +402,9 @@
         min-height: 85vh;
         page-break-after: always !important;
       }
-      /* 대제목 영역: 중앙 정렬, 줄바꿈 방지 */
+      /* 대제목 영역: 세로 정중앙 위치 (margin: auto 활용) */
       .report-title-section {
-        margin: 15vh auto 0 auto !important; /* 상단에서 적절히 떨어진 위치 고정 */
+        margin: auto !important; /* 위아래 빈 공간을 똑같이 나눠가져서 정중앙에 위치 */
         text-align: center;
         page-break-after: avoid !important;
         page-break-inside: avoid !important;
@@ -420,7 +420,7 @@
       }
       /* 특정 장(Section)의 강제 페이지 넘김 설정 */
       #section1 {
-        margin-top: auto !important; /* 대제목과의 사이를 최대한 벌려 페이지 하단으로 쏠리게 함 */
+        margin-top: 0 !important; /* 대제목이 auto로 공간을 밀어내므로 0으로 설정해도 맨 밑에 붙음 */
         margin-bottom: 30px !important; /* 바닥에서 살짝 띄움 */
         page-break-before: avoid !important; /* 제목과 절대 갈라지지 않도록 설정 */
         page-break-after: always !important; /* 1번 종합요약 단독 1장 */
