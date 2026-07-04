@@ -370,9 +370,18 @@
         margin-bottom: 20px !important;
         padding-bottom: 15px !important;
       }
-      /* 표와 차트가 페이지 중간에 잘리지 않도록 보호 */
+      /* 내러티브(본문) 폰트 사이즈 축소 */
+      .narrative-text, .narrative-list li {
+        font-size: 12px !important;
+      }
+      /* 표와 차트가 페이지 중간에 잘리지 않도록 보호 및 크기 조절 */
       .chart-container, .table-container, table, tr, img {
         page-break-inside: avoid;
+      }
+      .chart-container img {
+        max-width: 80% !important; /* 차트 크기를 80%로 축소 */
+        margin: 0 auto !important; /* 중앙 정렬 */
+        display: block !important;
       }
       /* 테이블 테두리를 깔끔한 실선으로 변경하여 인쇄 최적화 */
       table {
