@@ -339,29 +339,32 @@
     /* PDF 프린트 출력용 스타일 (페이지 잘림 방지 및 레이아웃 개선) */
     @media print {
       body {
-        background-color: white !important;
+        background-color: var(--bg-color) !important; /* HTML 원본 배경색 유지 */
         padding-bottom: 0;
-        font-size: 13pt; /* 프린트 가독성을 위해 폰트 크기 미세조정 */
+        font-size: 14px !important; /* HTML 원본 사이즈에 맞춤 (어벙벙함 해소) */
+        -webkit-print-color-adjust: exact; /* 배경색 출력 강제 */
       }
       .container {
         margin: 0 auto;
         padding: 0 15px;
         max-width: none;
       }
-      /* 라운드 박스 디자인을 없애고 여백 중심의 문서(Document) 스타일로 변경 */
+      /* HTML 화면처럼 PDF에서도 블록(라운딩, 배경, 테두리) 단위를 완벽히 유지하도록 복원 */
       .section-card {
         page-break-inside: avoid;
-        box-shadow: none !important;
-        border: none !important; /* 테두리 제거 */
-        background: transparent !important; /* 배경색 제거 */
-        padding: 10px 0 !important; /* 좌우 여백을 없애서 테이블이 넉넉하게 들어갈 공간 확보 */
-        margin-bottom: 40px !important; /* 섹션 간격 확보 */
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important; /* 약간의 그림자 추가 */
+        border: 1px solid var(--card-border) !important; /* 원본 테두리 유지 */
+        background-color: var(--card-bg) !important; /* 하얀 박스 배경 유지 */
+        border-radius: 12px !important; /* 라운딩 복원 */
+        padding: 24px !important; /* HTML 패딩 유지 */
+        margin-bottom: 30px !important; /* 섹션 간격 확보 */
+        -webkit-print-color-adjust: exact;
       }
       .section-card h3 {
-        font-size: 18pt;
-        border-bottom: 2px solid var(--text-primary); /* 인쇄용 대비 높은 색상으로 강조 */
-        margin-bottom: 20px;
-        padding-bottom: 5px;
+        font-size: 18px !important; /* 폰트 사이즈를 HTML과 비슷하게 변경 */
+        border-bottom: 1px solid var(--card-border) !important; /* 얇은 밑줄 유지 */
+        margin-bottom: 20px !important;
+        padding-bottom: 15px !important;
       }
       /* 표와 차트가 페이지 중간에 잘리지 않도록 보호 */
       .chart-container, .table-container, table, tr, img {
@@ -369,12 +372,12 @@
       }
       /* 테이블 테두리를 깔끔한 실선으로 변경하여 인쇄 최적화 */
       table {
-        border: 1px solid var(--card-border);
-        font-size: 10.5pt !important; /* 인쇄 시 테이블 폰트를 더 작게 */
+        border: 1px solid var(--card-border) !important;
+        font-size: 12.5px !important; /* HTML과 동일한 크기로 유지 */
       }
       th, td {
-        border-bottom: 1px solid var(--card-border);
-        padding: 6px 4px; /* 인쇄 시 셀 여백을 확 줄여서 공간 확보 */
+        border-bottom: 1px solid var(--card-border) !important;
+        padding: 8px 10px !important; /* 여백도 HTML과 동일하게 유지 */
       }
       th {
         background-color: #f8fafc !important; /* 인쇄 시 옅은 회색 배경 유지 */
@@ -411,12 +414,12 @@
         page-break-inside: avoid !important;
       }
       .report-title-section h2 {
-        font-size: 26pt !important;
+        font-size: 32px !important; /* 어벙벙한 pt 대신 깔끔한 px 단위 적용 */
         white-space: nowrap !important;
         margin-bottom: 10px !important;
       }
       .report-title-section p {
-        font-size: 13pt !important;
+        font-size: 14px !important;
         white-space: nowrap !important;
       }
       /* 특정 장(Section)의 강제 페이지 넘김 설정 */
