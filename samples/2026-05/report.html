@@ -246,10 +246,9 @@
 
     /* 이미지 및 차트 스타일링 */
     .chart-container {
-      background-color: var(--bg-color);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 16px;
+      background-color: transparent; /* 겹치는 액자(배경) 색상 제거 */
+      border: none; /* 겹치는 테두리 제거 */
+      padding: 10px 0; /* 불필요한 이중 여백을 줄임 */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -258,7 +257,8 @@
     .chart-container img {
       max-width: 100%;
       height: auto;
-      border-radius: 8px;
+      border-radius: 12px; /* 이미지 자체에만 라운딩 처리 */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 이미지가 돋보이도록 옅은 그림자 추가 */
     }
 
     /* 테이블 스타일링 */
