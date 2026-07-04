@@ -394,13 +394,12 @@
       .theme-toggle-btn, .toc-card {
         display: none !important; 
       }
-      /* 커버 페이지(대제목+1장) 하단 쏠림 래퍼 (하단에서 15% 띄움) */
+      /* 커버 페이지(대제목+1장) 수직 정중앙 래퍼 */
       .cover-page-wrapper {
         display: flex;
         flex-direction: column;
-        justify-content: flex-end; /* 전체를 하단으로 밀어냄 */
+        justify-content: center; /* 전체를 다시 정중앙으로 복구 */
         min-height: 85vh;
-        padding-bottom: 15vh !important; /* 바닥에서 어느 정도 띄워서 안정감 확보 */
         page-break-after: always !important;
       }
       /* 대제목 영역: 중앙 정렬, 줄바꿈 방지 */
