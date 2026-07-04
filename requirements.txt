@@ -1,0 +1,8 @@
+beautifulsoup4
+Jinja2
+matplotlib
+pandas
+playwright
+PyYAML
+requests
+pyarrow
